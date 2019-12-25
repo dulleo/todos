@@ -41,4 +41,11 @@ public class Role {
         public void setName(RoleName name) {
             this.name = name;
         }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "name=" + name +
+                '}';
+    }
 }
