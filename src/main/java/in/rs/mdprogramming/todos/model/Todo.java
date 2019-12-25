@@ -3,10 +3,14 @@ package in.rs.mdprogramming.todos.model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "todos")
+@EntityListeners(AuditingEntityListener.class)
 public class Todo {
 
     @Id
