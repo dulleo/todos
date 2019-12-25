@@ -3,10 +3,12 @@ package in.rs.mdprogramming.todos.security;
 import org.springframework.beans.factory.annotation.Value;
 
 import io.jsonwebtoken.Jwts;
+import org.springframework.stereotype.Component;
 
 /**
  * This class provides username from token
  */
+@Component
 public class UsernameFromTokenProvider {
 
     @Value("${jwt.secret}")
