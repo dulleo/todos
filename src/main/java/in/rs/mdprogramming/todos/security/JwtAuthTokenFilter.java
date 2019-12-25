@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -27,6 +28,7 @@ import java.io.IOException;
  *  * 	- load data from users table, then build an authentication object
  *  * 	- set the authentication object to Security Context
  */
+@Component
 public class JwtAuthTokenFilter extends OncePerRequestFilter {
 
     private static final Logger logger =
