@@ -7,6 +7,9 @@ import org.springframework.security.core.Authentication;
 
 import java.util.Date;
 
+/**
+ * This is class that generates a JWT token
+ */
 public class JwtProvider {
 
     @Value("${jwt.secret}")
