@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 
 import io.jsonwebtoken.Jwts;
 
+/**
+ * This class provides username from token
+ */
 public class UsernameFromTokenProvider {
 
     @Value("${jwt.secret}")
