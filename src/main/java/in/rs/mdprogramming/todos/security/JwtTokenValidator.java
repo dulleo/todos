@@ -4,10 +4,12 @@ import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * This class validates jwt token
  */
+@Component
 public class JwtTokenValidator {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenValidator.class);
