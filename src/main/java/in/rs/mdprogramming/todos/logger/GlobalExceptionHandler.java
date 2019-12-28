@@ -5,7 +5,9 @@ import in.rs.mdprogramming.todos.exception.ResourceNotFoundException;
 import in.rs.mdprogramming.todos.exception.UsernameExistsException;
 import in.rs.mdprogramming.todos.response.ErrorResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,6 +20,8 @@ import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    private static final String message = "An error has occurred while processing your request. Please contact support!";
 
     @Autowired
     CommonLogger commonLogger;
@@ -59,7 +63,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(InvalidRoleException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ErrorResponse invalidRoleError(InvalidRoleException ex) {
 
@@ -67,10 +71,28 @@ public class GlobalExceptionHandler {
 
     }
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ResponseBody
+    public ErrorResponse dataIntegrityViolationError(DataIntegrityViolationException ex) {
+
+        return new ErrorResponse(message);
+
+    }
+
     @ExceptionHandler(SQLException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ResponseBody
     public ErrorResponse sqlError(SQLException ex) {
+
+        return new ErrorResponse(message);
+
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorResponse badCredentialsError(BadCredentialsException ex) {
 
         return new ErrorResponse(ex.getMessage());
 
@@ -81,7 +103,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ErrorResponse internalError(Exception ex) {
 
-        return new ErrorResponse(ex.getMessage());
+        return new ErrorResponse(message);
 
     }
 
