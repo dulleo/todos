@@ -1,7 +1,8 @@
-package in.rs.mdprogramming.todos.service;
+package in.rs.mdprogramming.todos.controller;
 
 import in.rs.mdprogramming.todos.dto.UserLoginDTO;
 import in.rs.mdprogramming.todos.response.JwtResponse;
+import in.rs.mdprogramming.todos.service.LoginServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
