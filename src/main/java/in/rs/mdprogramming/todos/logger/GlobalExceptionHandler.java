@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.xml.ws.Response;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
