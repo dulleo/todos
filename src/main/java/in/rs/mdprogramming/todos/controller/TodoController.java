@@ -14,7 +14,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping(path = "/api/")
+@RequestMapping(path = "")
 public class TodoController {
 
     @Autowired
