@@ -1,6 +1,5 @@
 package in.rs.mdprogramming.todos.logger;
 
-import in.rs.mdprogramming.todos.exception.InvalidPrincipalException;
 import in.rs.mdprogramming.todos.exception.InvalidRoleException;
 import in.rs.mdprogramming.todos.exception.ResourceNotFoundException;
 import in.rs.mdprogramming.todos.exception.UsernameExistsException;
@@ -72,15 +71,6 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ResponseBody
     public ErrorResponse sqlError(SQLException ex) {
-
-        return new ErrorResponse(ex.getMessage());
-
-    }
-
-    @ExceptionHandler(InvalidPrincipalException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public ErrorResponse badRequestError(InvalidPrincipalException ex) {
 
         return new ErrorResponse(ex.getMessage());
 
