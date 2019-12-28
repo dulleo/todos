@@ -13,13 +13,13 @@ import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("")
 public class RegisterUserController {
 
     @Autowired
     private RegisterUserServiceInterface registerUserService;
 
-    @RequestMapping(method = RequestMethod.POST, path = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, path = "/todos/auth/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void registerUser(@Valid @RequestBody UserRegistrationDTO userRegistrationDTO) throws InvalidRoleException, UsernameExistsException {
         registerUserService.register(userRegistrationDTO);
