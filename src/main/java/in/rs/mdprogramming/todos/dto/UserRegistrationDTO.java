@@ -16,14 +16,13 @@ public class UserRegistrationDTO {
     @Size(min = 3, max = 50, message = "\'firstName\' property size must be min = 3 and max = 50 characters.")
     private String lastName;
 
-    @NotBlank(message="Property \'email\' is null!")
-    @Size(max = 50, message = "\'email\' property size must be max = 50 characters.")
+    @NotBlank(message="Property \'username\' is null!")
+    @Size(max = 50, message = "\'username\' property size must be max = 50 characters.")
     @Email(message="Must be an email!")
-    private String email;
+    private String username;
 
     @NotNull(message="Property \'roles\' is null!")
     private Set<String> roles;
-
 
     public String getFirstName() {
         return firstName;
@@ -41,12 +40,12 @@ public class UserRegistrationDTO {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Set<String> getRoles() {
