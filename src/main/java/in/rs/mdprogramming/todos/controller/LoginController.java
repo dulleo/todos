@@ -12,14 +12,14 @@ import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping(path = "/api/auth")
+@RequestMapping(path = "")
 public class LoginController {
 
     @Autowired
     private LoginServiceInterface loginService;
 
     @RequestMapping(method = RequestMethod.POST,
-            path ="/login",
+            path ="/todos/auth/login",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
