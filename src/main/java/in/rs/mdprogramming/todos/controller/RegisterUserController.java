@@ -1,4 +1,4 @@
-package in.rs.mdprogramming.todos;
+package in.rs.mdprogramming.todos.controller;
 
 import in.rs.mdprogramming.todos.dto.UserRegistrationDTO;
 import in.rs.mdprogramming.todos.exception.InvalidRoleException;
@@ -19,7 +19,7 @@ public class RegisterUserController {
     @Autowired
     private RegisterUserServiceInterface registerUserService;
 
-    @RequestMapping(method = RequestMethod.POST, path="/register", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, path = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void registerUser(@Valid @RequestBody UserRegistrationDTO userRegistrationDTO) throws InvalidRoleException, UsernameExistsException {
         registerUserService.register(userRegistrationDTO);
