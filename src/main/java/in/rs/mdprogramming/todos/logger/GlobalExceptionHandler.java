@@ -1,6 +1,7 @@
 package in.rs.mdprogramming.todos.logger;
 
 import in.rs.mdprogramming.todos.exception.InvalidPrincipalException;
+import in.rs.mdprogramming.todos.exception.InvalidRoleException;
 import in.rs.mdprogramming.todos.exception.ResourceNotFoundException;
 import in.rs.mdprogramming.todos.exception.UsernameExistsException;
 import in.rs.mdprogramming.todos.response.ErrorResponse;
@@ -49,42 +50,23 @@ public class GlobalExceptionHandler {
 
     }
 
-    @ExceptionHandler(UsernameExistsException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    @ResponseBody
-    public ErrorResponse emailExistsError(UsernameExistsException ex) {
-
-        return new ErrorResponse(ex.getMessage());
-
-    }
-
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
-    public ErrorResponse invalidRoleError(ResourceNotFoundException ex) {
+    public ErrorResponse resourceNotFoundError(ResourceNotFoundException ex) {
 
         return new ErrorResponse(ex.getMessage());
 
     }
 
-    /**
-    @ExceptionHandler(RoleNotFoundException.class)
+    @ExceptionHandler(InvalidRoleException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
-    public ErrorResponse invalidRoleError(RoleNotFoundException ex) {
+    public ErrorResponse invalidRoleError(InvalidRoleException ex) {
 
         return new ErrorResponse(ex.getMessage());
 
     }
-
-    @ExceptionHandler(RolesAreEmptyException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public ErrorResponse emptyRolesError(RolesAreEmptyException ex) {
-
-        return new ErrorResponse(ex.getMessage());
-
-    }*/
 
     @ExceptionHandler(SQLException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
