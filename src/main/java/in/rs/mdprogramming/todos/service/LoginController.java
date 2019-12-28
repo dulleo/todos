@@ -18,9 +18,9 @@ public class LoginController {
     private LoginServiceInterface loginService;
 
     @RequestMapping(method = RequestMethod.POST,
-            path="/login",
-            consumes= MediaType.APPLICATION_JSON_VALUE,
-            produces=MediaType.APPLICATION_JSON_VALUE)
+            path ="/login",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public JwtResponse login(@Valid @RequestBody UserLoginDTO loginDTO) {
