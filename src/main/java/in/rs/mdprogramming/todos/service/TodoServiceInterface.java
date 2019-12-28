@@ -11,7 +11,7 @@ public interface TodoServiceInterface {
 
     List<TodoDTO> getTodos();
 
-    TodoDTO getTodo(Long userId) throws ResourceNotFoundException;
+    TodoDTO getTodo(Long todoId) throws ResourceNotFoundException;
 
     void editTodo(Long userId, TodoDTO taskDTO) throws ResourceNotFoundException;
 
