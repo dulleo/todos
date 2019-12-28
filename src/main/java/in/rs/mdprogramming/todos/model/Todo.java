@@ -25,12 +25,13 @@ public class Todo {
     private String description;
 
     @Basic
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)        //This will store only date in the database
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "target_date", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date targetDate;
 
     @Column(name = "is_done")
@@ -43,10 +44,6 @@ public class Todo {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -67,10 +64,6 @@ public class Todo {
 
     public Date getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 
     public Date getTargetDate() {
