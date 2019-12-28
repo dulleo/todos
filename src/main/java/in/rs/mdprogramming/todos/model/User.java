@@ -3,7 +3,6 @@ package in.rs.mdprogramming.todos.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,7 +25,6 @@ public class User {
     private String password;
 
     @Column(name = "username")
-    @Email(message = "Email must be valid")
     private String username;
 
     @ManyToMany(fetch = FetchType.LAZY)
