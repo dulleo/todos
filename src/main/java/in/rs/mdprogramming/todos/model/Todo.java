@@ -1,5 +1,6 @@
 package in.rs.mdprogramming.todos.model;
 
+import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
@@ -34,8 +35,10 @@ public class Todo {
     @Temporal(TemporalType.DATE)
     private Date targetDate;
 
-    @Column(name = "is_done")
-    private Boolean isDone;
+    @Enumerated(EnumType.STRING)
+    @NaturalId
+    @Column(name = "status", nullable = false)
+    private TodoStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -74,12 +77,12 @@ public class Todo {
         this.targetDate = targetDate;
     }
 
-    public Boolean getIsDone() {
-        return isDone;
+    public TodoStatus getStatus() {
+        return status;
     }
 
-    public void setIsDone(Boolean isDone) {
-        this.isDone = isDone;
+    public void setStatus(TodoStatus status) {
+        this.status = status;
     }
 
     public void setUser(User user) {
