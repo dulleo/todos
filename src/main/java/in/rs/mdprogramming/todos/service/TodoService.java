@@ -3,6 +3,7 @@ package in.rs.mdprogramming.todos.service;
 import in.rs.mdprogramming.todos.dto.TodoDTO;
 import in.rs.mdprogramming.todos.exception.ResourceNotFoundException;
 import in.rs.mdprogramming.todos.model.Todo;
+import in.rs.mdprogramming.todos.model.TodoStatus;
 import in.rs.mdprogramming.todos.model.User;
 import in.rs.mdprogramming.todos.repository.TodoRepository;
 import in.rs.mdprogramming.todos.repository.UserRepository;
@@ -41,7 +42,7 @@ public class TodoService implements TodoServiceInterface {
 
         Todo todo = new Todo();
         todo.setDescription(todoDTO.getDescription());
-        todo.setIsDone(false);
+        todo.setStatus(TodoStatus.OPEN);
         todo.setName(todoDTO.getName());
         todo.setTargetDate(todoDTO.getTargetDate());
         todo.setUser(user);
@@ -97,8 +98,9 @@ public class TodoService implements TodoServiceInterface {
     public void editTodo(Long todoId, TodoDTO todoDTO) throws ResourceNotFoundException {
 
         Todo todo = getTodoFromDatabase(todoId);
+        todo.setName(todoDTO.getName());
         todo.setDescription(todoDTO.getDescription());
-        todo.setIsDone(todoDTO.getIsDone());
+        todo.setStatus(todoDTO.getStatus());
         todo.setTargetDate(todoDTO.getTargetDate());
 
         todoRepository.save(todo);
@@ -128,7 +130,7 @@ public class TodoService implements TodoServiceInterface {
         todoDTO.setCreatedAt(t.getCreatedAt());
         todoDTO.setDescription(t.getDescription());
         todoDTO.setId(t.getId());
-        todoDTO.setIsDone(t.getIsDone());
+        todoDTO.setStatus(t.getStatus());
         todoDTO.setName(t.getName());
         todoDTO.setTargetDate(t.getTargetDate());
         return todoDTO;
