@@ -9,7 +9,7 @@ public class UserLoginDTO {
 
     @NotBlank(message="Property \'username\' is null!")
     @Size(max = 50, message = "\'username\' property size must be max = 50 characters.")
-    @Email(message="Must be an email!")
+    @Email(message="Username must be an email!")
     private String username;
 
     @NotNull(message="Property \'password\' is null!")
@@ -19,8 +19,6 @@ public class UserLoginDTO {
     public String getUsername() {
         return username;
     }
-
-
 
     public String getPassword() { return password; }
 
