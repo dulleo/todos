@@ -7,13 +7,13 @@ import javax.validation.constraints.Size;
 
 public class UserLoginDTO {
 
-    @NotBlank(message="Property \'username\' is null!")
-    @Size(max = 50, message = "\'username\' property size must be max = 50 characters.")
+    @NotBlank(message="Username is null!")
+    @Size(max = 50, message = "Username size is max = 50 characters.")
     @Email(message="Username must be an email!")
     private String username;
 
-    @NotNull(message="Property \'password\' is null!")
-    @Size(min = 8, max = 50, message = "\'password\' property size must be min = 8 and max = 50 characters.")
+    @NotNull(message="Password is null!")
+    @Size(min = 8, max = 50, message = "Password size is min 8 and max 50 characters.")
     private String password;
 
     public String getUsername() {
