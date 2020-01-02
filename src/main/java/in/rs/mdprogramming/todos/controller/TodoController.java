@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(path = "/api")
 public class TodoController {
@@ -20,7 +20,10 @@ public class TodoController {
     @Autowired
     private TodoServiceInterface todoService;
 
-    @RequestMapping(method = RequestMethod.POST, path = "/todos", consumes = MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST,
+            path = "/todos",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces=MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ROLE_USER')")
     public void createTodo(@Valid @RequestBody TodoDTO todoDTO) throws ResourceNotFoundException {
@@ -34,9 +37,7 @@ public class TodoController {
     @ResponseBody
     @PreAuthorize("hasRole('ROLE_USER')")
     public List<TodoDTO> getTodos() {
-
         return todoService.getTodos();
-
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/todos/{todoId}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -44,26 +45,20 @@ public class TodoController {
     @ResponseBody
     @PreAuthorize("hasRole('ROLE_USER')")
     public TodoDTO getTodo(@PathVariable Long todoId) throws ResourceNotFoundException {
-
         return todoService.getTodo(todoId);
-
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/todos/{todoId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ROLE_USER')")
     public void editTodo(@PathVariable Long todoId, @Valid @RequestBody TodoDTO todoDTO) throws ResourceNotFoundException {
-
         todoService.editTodo(todoId, todoDTO);
-
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path =" /todos/{todoId}")
-    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(method = RequestMethod.DELETE, path ="/todos/{todoId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @PreAuthorize("hasRole('ROLE_USER')")
     public void deleteTodo(@PathVariable Long todoId) throws ResourceNotFoundException {
-
         todoService.deleteTodo(todoId);
-
     }
 }
