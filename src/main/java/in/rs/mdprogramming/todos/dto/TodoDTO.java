@@ -1,7 +1,10 @@
 package in.rs.mdprogramming.todos.dto;
 
+import in.rs.mdprogramming.todos.model.TodoStatus;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class TodoDTO {
@@ -9,6 +12,7 @@ public class TodoDTO {
     private Long id;
 
     @NotBlank(message = "Property \'name\' is null or empty!")
+    @Size(max = 50, message = "Max number of characters for \'name\' property is 50")
     private String name;
 
     private String description;
@@ -20,7 +24,7 @@ public class TodoDTO {
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date targetDate;
 
-    private Boolean isDone;
+    private TodoStatus status;
 
     public Long getId() {
         return id;
@@ -62,18 +66,23 @@ public class TodoDTO {
         this.targetDate = targetDate;
     }
 
-    public Boolean getIsDone() {
-        return isDone;
+    public TodoStatus getStatus() {
+        return status;
     }
 
-    public void setIsDone(Boolean isDone) {
-        this.isDone = isDone;
+    public void setStatus(TodoStatus status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return "[id=" + id + ", name=" + name + ", description=" + description + ", createdAt=" + createdAt
-                + ", targetDate=" + targetDate + ", isDone=" + isDone + "]";
+        return "TodoDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", createdAt=" + createdAt +
+                ", targetDate=" + targetDate +
+                ", status=" + status +
+                '}';
     }
-
 }
