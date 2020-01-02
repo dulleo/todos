@@ -36,7 +36,6 @@ public class Todo {
     private Date targetDate;
 
     @Enumerated(EnumType.STRING)
-    @NaturalId
     @Column(name = "status", nullable = false)
     private TodoStatus status;
 
