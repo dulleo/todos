@@ -12,7 +12,7 @@ import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping(path = "")
+@RequestMapping(path = "/api")
 public class LoginController {
 
     @Autowired
