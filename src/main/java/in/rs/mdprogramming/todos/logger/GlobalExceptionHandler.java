@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    private static final String message = "An error has occurred while processing your request. Please contact support!";
+    private static final String message = "An error has occurred while processing your request. Please contact support at info@mdprogramming.in.rs";
 
     @Autowired
     CommonLogger commonLogger;
