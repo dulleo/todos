@@ -121,6 +121,21 @@ public class TodoService implements TodoServiceInterface {
     }
 
     /**
+     *
+     * @param todoId
+     * @param status
+     * @throws ResourceNotFoundException
+     */
+    @Override
+    public void changeStatus(Long todoId, TodoStatus status) throws ResourceNotFoundException {
+
+        Todo todo = getTodoFromDatabase(todoId);
+        todo.setStatus(status);
+        todoRepository.save(todo);
+
+    }
+
+    /**
      * Converts model to dto
      * @param t
      * @return
