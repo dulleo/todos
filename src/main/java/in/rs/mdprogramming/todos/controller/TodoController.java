@@ -2,6 +2,7 @@ package in.rs.mdprogramming.todos.controller;
 
 import in.rs.mdprogramming.todos.dto.TodoDTO;
 import in.rs.mdprogramming.todos.exception.ResourceNotFoundException;
+import in.rs.mdprogramming.todos.model.TodoStatus;
 import in.rs.mdprogramming.todos.service.TodoServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,5 +60,12 @@ public class TodoController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public void deleteTodo(@PathVariable Long todoId) throws ResourceNotFoundException {
         todoService.deleteTodo(todoId);
+    }
+
+    @RequestMapping(method = RequestMethod.PATCH, path ="/todos/{todoId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public void changeStatus(@PathVariable Long todoId, @RequestBody TodoStatus status) throws ResourceNotFoundException {
+        todoService.changeStatus(todoId, status);
     }
 }
